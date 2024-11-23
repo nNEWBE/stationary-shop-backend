@@ -61,8 +61,30 @@ const getSingleStationaryProduct = async (req: Request, res: Response) => {
   }
 };
 
+const updateStationaryProduct = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.productId;
+    const body = req.body;
+    const data = await ProductServices.updateStationaryProductFromDB(id, body);
+    res.send({
+      message: 'Product updated successfully',
+      status: true,
+      data: data,
+    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    res.json({
+      message: error.message,
+      success: false,
+      error,
+      stack: error.stack,
+    });
+  }
+};
+
 export const ProductController = {
   createStationaryProduct,
   getAllStationaryProducts,
   getSingleStationaryProduct,
+  updateStationaryProduct,
 };

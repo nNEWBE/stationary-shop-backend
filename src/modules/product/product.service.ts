@@ -16,8 +16,19 @@ const getSingleStationaryProductFromDB = async (id: string) => {
   return result;
 };
 
+const updateStationaryProductFromDB = async (
+  id: string,
+  productData: Partial<IProduct>,
+) => {
+  const result = await Product.findOneAndUpdate({ _id: id }, productData, {
+    new: true,
+  });
+  return result;
+};
+
 export const ProductServices = {
   createStationaryProductIntoDB,
   getAllStationaryProductsFromDB,
   getSingleStationaryProductFromDB,
+  updateStationaryProductFromDB,
 };
