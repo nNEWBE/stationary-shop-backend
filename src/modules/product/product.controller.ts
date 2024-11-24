@@ -82,9 +82,39 @@ const updateStationaryProduct = async (req: Request, res: Response) => {
   }
 };
 
+const deleteStationaryProduct = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.productId;
+    const deletedProduct =
+      await ProductServices.deleteStationaryProductFromDB(id);
+    if (!deletedProduct) {
+      res.status(404).json({
+        message: 'Product not found',
+        success: false,
+      });
+    } else {
+      res.send({
+        message: 'Product deleted successfully',
+        status: true,
+        data: {},
+      });
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    res.json({
+      message: error.message,
+      success: false,
+      error,
+      stack: error.stack,
+    });
+  }
+};
+
 export const ProductController = {
   createStationaryProduct,
   getAllStationaryProducts,
   getSingleStationaryProduct,
   updateStationaryProduct,
+  deleteStationaryProduct,
 };
