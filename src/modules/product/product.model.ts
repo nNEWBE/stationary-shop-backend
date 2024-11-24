@@ -1,7 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { IProduct } from './product.interface';
 
-// Create the schema for MongoDB
 const ProductSchema: Schema = new Schema(
   {
     name: { type: String, required: true },
@@ -27,7 +26,6 @@ const ProductSchema: Schema = new Schema(
   },
 );
 
-// Create and export the model
 const Product = mongoose.model<IProduct>('Product', ProductSchema);
 
 export default Product;
