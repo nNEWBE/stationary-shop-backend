@@ -1,22 +1,29 @@
-# 🛒 Stationery Shop
+# 🛍️ [Stationery Shop](https://stationary-shop-six.vercel.app/)
+
 ## 📋 Objective
+
 The **Stationery Shop** is a backend application built using **Express** with **TypeScript**, integrating **MongoDB** with **Mongoose** to manage stationery products and orders. The application ensures data integrity through schema validation and provides APIs for seamless CRUD operations.
 
 ## ✨ Features
+
 1. **Stationery Product Management**:
+
    - Add, update, delete, and retrieve stationery products.
    - Supports detailed error handling (e.g., 404 when products are not found).
    - Includes in-stock quantity management.
 
 2. **Order Management**:
+
    - Place orders for products.
    - Automatically update product stock after orders.
    - Retrieve orders or calculate total revenue.
 
 3. **Validation**:
+
    - Zod and Mongoose validations ensure robust data integrity.
 
 4. **Error Handling**:
+
    - Detailed error messages with appropriate HTTP status codes (e.g., 404, 400, 500).
 
 5. **Modular Structure**:
@@ -36,6 +43,7 @@ The **Stationery Shop** is a backend application built using **Express** with **
 ---
 
 ## 📂 Folder Structure
+
 ```plaintext
 
 src
@@ -66,4 +74,55 @@ package.json                        # Dependencies and scripts
 tsconfig.json                       # TypeScript configuration
 
 
+```
+
+## 📦 Installation Guides
+
+**1. Install Dependencies:**
+
+```bash
+npm install
+```
+
+**2. Set up .env file: Create a .env file in the root directory and add:**
+
+```bash
+PORT=5000
+DATABASE_URL=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>
+```
+
+**3. Compile TypeScript:**
+
+```bash
+npm run build
 ````
+
+**4. Start the Server:**
+
+- Production Mode
+
+```bash
+npm run start:prod
+```
+
+- Development Mode
+
+```bash
+npm run start:dev
+```
+
+## 🚀 Api Endpoints
+
+| Method   | Endpoint         | Description                             | Response Status |
+| -------- | ---------------- | --------------------------------------- | --------------- |
+| `POST`   | `/products`      | Create a new product                    | `201 Created`   |
+| `GET`    | `/products`      | Get all products                        | `200 OK`        |
+| `GET`    | `/products/:id`  | Get a single product by ID              | `200 OK`        |
+| `PUT`    | `/products/:id`  | Update a product by ID                  | `200 OK`        |
+| `DELETE` | `/products/:id`  | Delete a product by ID                  | `200 OK`        |
+| `POST`   | `/orders`        | Create a new order                      | `201 Created`   |
+| `GET`    | `/orders`        | Get all orders                          | `200 OK`        |
+| `GET`    | `/orders/:email` | Get orders for a specific user by email | `200 OK`        |
+| `GET`    | `/revenue`       | Calculate total revenue from all orders | `200 OK`        |
+
+This table gives an overview of the available API endpoints for the Stationery Shop application.

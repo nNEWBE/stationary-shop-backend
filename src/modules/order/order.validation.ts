@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-// Zod schema for validating Order data
 export const OrderValidationSchema = z.object({
     email: z.string().email("Invalid email address"),
     product: z.string().regex(/^[0-9a-fA-F]{24}$/, "Invalid Product ID format"),
